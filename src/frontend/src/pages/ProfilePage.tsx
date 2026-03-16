@@ -516,8 +516,8 @@ export function ProfilePage() {
             Brand AI Assistant
           </CardTitle>
           <CardDescription>
-            Ask for content ideas, strategy advice, or brand analysis. Press
-            Enter to send, Shift+Enter for a new line.
+            Your on-demand content and marketing assistant — carousels, reels,
+            captions, Facebook ads, strategy, and more.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -559,7 +559,7 @@ export function ProfilePage() {
                   handleSendChat();
                 }
               }}
-              placeholder="Ask about content ideas, strategy..."
+              placeholder="Ask for a carousel script, reel script, Facebook ad copy, marketing advice..."
               disabled={isChatLoading}
               rows={2}
               className="resize-none flex-1 min-h-[44px] max-h-32"
