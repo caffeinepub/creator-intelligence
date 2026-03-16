@@ -22,9 +22,11 @@ export interface CreatorProfile {
     twitterUrl?: string;
     instagramUrl?: string;
     newsletterUrl?: string;
+    facebookContentType?: string;
     brandColors: Array<string>;
     brandName: string;
     youtubeUrl?: string;
+    facebookUrl?: string;
     tiktokUrl?: string;
 }
 export interface Content {
@@ -49,13 +51,14 @@ export enum Platform {
     blog = "blog",
     instagram = "instagram",
     podcast = "podcast",
+    facebook = "facebook",
     youtube = "youtube",
     newsletter = "newsletter"
 }
 export interface backendInterface {
     addContent(url: string, platform: Platform, title: string, description: string, contentText: string, metadata: string): Promise<string>;
     addProfileInsight(insight: ProfileInsight): Promise<void>;
-    createProfile(brandName: string, instagramUrl: string | null, tiktokUrl: string | null, youtubeUrl: string | null, twitterUrl: string | null, newsletterUrl: string | null, blogUrl: string | null, podcastUrl: string | null, brandColors: Array<string>, voiceCharacteristics: string, contentPillars: Array<string>, about: string): Promise<void>;
+    createProfile(brandName: string, instagramUrl: string | null, tiktokUrl: string | null, youtubeUrl: string | null, twitterUrl: string | null, newsletterUrl: string | null, blogUrl: string | null, podcastUrl: string | null, facebookUrl: string | null, facebookContentType: string | null, brandColors: Array<string>, voiceCharacteristics: string, contentPillars: Array<string>, about: string): Promise<void>;
     getAllContent(): Promise<Array<Content>>;
     getContent(id: string): Promise<Content>;
     getProfileInsights(): Promise<Array<ProfileInsight>>;

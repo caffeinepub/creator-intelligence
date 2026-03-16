@@ -104,9 +104,11 @@ export interface CreatorProfile {
     twitterUrl?: string;
     instagramUrl?: string;
     newsletterUrl?: string;
+    facebookContentType?: string;
     brandColors: Array<string>;
     brandName: string;
     youtubeUrl?: string;
+    facebookUrl?: string;
     tiktokUrl?: string;
 }
 export interface Content {
@@ -131,13 +133,14 @@ export enum Platform {
     blog = "blog",
     instagram = "instagram",
     podcast = "podcast",
+    facebook = "facebook",
     youtube = "youtube",
     newsletter = "newsletter"
 }
 export interface backendInterface {
     addContent(url: string, platform: Platform, title: string, description: string, contentText: string, metadata: string): Promise<string>;
     addProfileInsight(insight: ProfileInsight): Promise<void>;
-    createProfile(brandName: string, instagramUrl: string | null, tiktokUrl: string | null, youtubeUrl: string | null, twitterUrl: string | null, newsletterUrl: string | null, blogUrl: string | null, podcastUrl: string | null, brandColors: Array<string>, voiceCharacteristics: string, contentPillars: Array<string>, about: string): Promise<void>;
+    createProfile(brandName: string, instagramUrl: string | null, tiktokUrl: string | null, youtubeUrl: string | null, twitterUrl: string | null, newsletterUrl: string | null, blogUrl: string | null, podcastUrl: string | null, facebookUrl: string | null, facebookContentType: string | null, brandColors: Array<string>, voiceCharacteristics: string, contentPillars: Array<string>, about: string): Promise<void>;
     getAllContent(): Promise<Array<Content>>;
     getContent(id: string): Promise<Content>;
     getProfileInsights(): Promise<Array<ProfileInsight>>;
@@ -174,17 +177,17 @@ export class Backend implements backendInterface {
             return result;
         }
     }
-    async createProfile(arg0: string, arg1: string | null, arg2: string | null, arg3: string | null, arg4: string | null, arg5: string | null, arg6: string | null, arg7: string | null, arg8: Array<string>, arg9: string, arg10: Array<string>, arg11: string): Promise<void> {
+    async createProfile(arg0: string, arg1: string | null, arg2: string | null, arg3: string | null, arg4: string | null, arg5: string | null, arg6: string | null, arg7: string | null, arg8: string | null, arg9: string | null, arg10: Array<string>, arg11: string, arg12: Array<string>, arg13: string): Promise<void> {
         if (this.processError) {
             try {
-                const result = await this.actor.createProfile(arg0, to_candid_opt_n7(this._uploadFile, this._downloadFile, arg1), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg2), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg3), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg4), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg5), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg6), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg7), arg8, arg9, arg10, arg11);
+                const result = await this.actor.createProfile(arg0, to_candid_opt_n7(this._uploadFile, this._downloadFile, arg1), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg2), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg3), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg4), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg5), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg6), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg7), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg8), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg9), arg10, arg11, arg12, arg13);
                 return result;
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
-            const result = await this.actor.createProfile(arg0, to_candid_opt_n7(this._uploadFile, this._downloadFile, arg1), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg2), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg3), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg4), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg5), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg6), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg7), arg8, arg9, arg10, arg11);
+            const result = await this.actor.createProfile(arg0, to_candid_opt_n7(this._uploadFile, this._downloadFile, arg1), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg2), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg3), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg4), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg5), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg6), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg7), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg8), to_candid_opt_n7(this._uploadFile, this._downloadFile, arg9), arg10, arg11, arg12, arg13);
             return result;
         }
     }
@@ -317,9 +320,11 @@ function from_candid_record_n20(_uploadFile: (file: ExternalBlob) => Promise<Uin
     twitterUrl: [] | [string];
     instagramUrl: [] | [string];
     newsletterUrl: [] | [string];
+    facebookContentType: [] | [string];
     brandColors: Array<string>;
     brandName: string;
     youtubeUrl: [] | [string];
+    facebookUrl: [] | [string];
     tiktokUrl: [] | [string];
 }): {
     contentPillars: Array<string>;
@@ -330,9 +335,11 @@ function from_candid_record_n20(_uploadFile: (file: ExternalBlob) => Promise<Uin
     twitterUrl?: string;
     instagramUrl?: string;
     newsletterUrl?: string;
+    facebookContentType?: string;
     brandColors: Array<string>;
     brandName: string;
     youtubeUrl?: string;
+    facebookUrl?: string;
     tiktokUrl?: string;
 } {
     return {
@@ -344,9 +351,11 @@ function from_candid_record_n20(_uploadFile: (file: ExternalBlob) => Promise<Uin
         twitterUrl: record_opt_to_undefined(from_candid_opt_n21(_uploadFile, _downloadFile, value.twitterUrl)),
         instagramUrl: record_opt_to_undefined(from_candid_opt_n21(_uploadFile, _downloadFile, value.instagramUrl)),
         newsletterUrl: record_opt_to_undefined(from_candid_opt_n21(_uploadFile, _downloadFile, value.newsletterUrl)),
+        facebookContentType: record_opt_to_undefined(from_candid_opt_n21(_uploadFile, _downloadFile, value.facebookContentType)),
         brandColors: value.brandColors,
         brandName: value.brandName,
         youtubeUrl: record_opt_to_undefined(from_candid_opt_n21(_uploadFile, _downloadFile, value.youtubeUrl)),
+        facebookUrl: record_opt_to_undefined(from_candid_opt_n21(_uploadFile, _downloadFile, value.facebookUrl)),
         tiktokUrl: record_opt_to_undefined(from_candid_opt_n21(_uploadFile, _downloadFile, value.tiktokUrl))
     };
 }
@@ -361,11 +370,13 @@ function from_candid_variant_n12(_uploadFile: (file: ExternalBlob) => Promise<Ui
 } | {
     podcast: null;
 } | {
+    facebook: null;
+} | {
     youtube: null;
 } | {
     newsletter: null;
 }): Platform {
-    return "tiktok" in value ? Platform.tiktok : "twitter" in value ? Platform.twitter : "blog" in value ? Platform.blog : "instagram" in value ? Platform.instagram : "podcast" in value ? Platform.podcast : "youtube" in value ? Platform.youtube : "newsletter" in value ? Platform.newsletter : value;
+    return "tiktok" in value ? Platform.tiktok : "twitter" in value ? Platform.twitter : "blog" in value ? Platform.blog : "instagram" in value ? Platform.instagram : "podcast" in value ? Platform.podcast : "facebook" in value ? Platform.facebook : "youtube" in value ? Platform.youtube : "newsletter" in value ? Platform.newsletter : value;
 }
 function from_candid_variant_n17(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: {
     contentPerformance: null;
@@ -430,6 +441,8 @@ function to_candid_variant_n2(_uploadFile: (file: ExternalBlob) => Promise<Uint8
 } | {
     podcast: null;
 } | {
+    facebook: null;
+} | {
     youtube: null;
 } | {
     newsletter: null;
@@ -444,6 +457,8 @@ function to_candid_variant_n2(_uploadFile: (file: ExternalBlob) => Promise<Uint8
         instagram: null
     } : value == Platform.podcast ? {
         podcast: null
+    } : value == Platform.facebook ? {
+        facebook: null
     } : value == Platform.youtube ? {
         youtube: null
     } : value == Platform.newsletter ? {

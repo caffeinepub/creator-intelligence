@@ -14,6 +14,7 @@ export const Platform = IDL.Variant({
   'blog' : IDL.Null,
   'instagram' : IDL.Null,
   'podcast' : IDL.Null,
+  'facebook' : IDL.Null,
   'youtube' : IDL.Null,
   'newsletter' : IDL.Null,
 });
@@ -48,9 +49,11 @@ export const CreatorProfile = IDL.Record({
   'twitterUrl' : IDL.Opt(IDL.Text),
   'instagramUrl' : IDL.Opt(IDL.Text),
   'newsletterUrl' : IDL.Opt(IDL.Text),
+  'facebookContentType' : IDL.Opt(IDL.Text),
   'brandColors' : IDL.Vec(IDL.Text),
   'brandName' : IDL.Text,
   'youtubeUrl' : IDL.Opt(IDL.Text),
+  'facebookUrl' : IDL.Opt(IDL.Text),
   'tiktokUrl' : IDL.Opt(IDL.Text),
 });
 
@@ -64,6 +67,8 @@ export const idlService = IDL.Service({
   'createProfile' : IDL.Func(
       [
         IDL.Text,
+        IDL.Opt(IDL.Text),
+        IDL.Opt(IDL.Text),
         IDL.Opt(IDL.Text),
         IDL.Opt(IDL.Text),
         IDL.Opt(IDL.Text),
@@ -94,6 +99,7 @@ export const idlFactory = ({ IDL }) => {
     'blog' : IDL.Null,
     'instagram' : IDL.Null,
     'podcast' : IDL.Null,
+    'facebook' : IDL.Null,
     'youtube' : IDL.Null,
     'newsletter' : IDL.Null,
   });
@@ -128,9 +134,11 @@ export const idlFactory = ({ IDL }) => {
     'twitterUrl' : IDL.Opt(IDL.Text),
     'instagramUrl' : IDL.Opt(IDL.Text),
     'newsletterUrl' : IDL.Opt(IDL.Text),
+    'facebookContentType' : IDL.Opt(IDL.Text),
     'brandColors' : IDL.Vec(IDL.Text),
     'brandName' : IDL.Text,
     'youtubeUrl' : IDL.Opt(IDL.Text),
+    'facebookUrl' : IDL.Opt(IDL.Text),
     'tiktokUrl' : IDL.Opt(IDL.Text),
   });
   
@@ -144,6 +152,8 @@ export const idlFactory = ({ IDL }) => {
     'createProfile' : IDL.Func(
         [
           IDL.Text,
+          IDL.Opt(IDL.Text),
+          IDL.Opt(IDL.Text),
           IDL.Opt(IDL.Text),
           IDL.Opt(IDL.Text),
           IDL.Opt(IDL.Text),

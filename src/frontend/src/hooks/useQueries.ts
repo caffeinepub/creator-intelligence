@@ -56,6 +56,8 @@ export function useCreateProfile() {
       newsletterUrl: string | null;
       blogUrl: string | null;
       podcastUrl: string | null;
+      facebookUrl: string | null;
+      facebookContentType: string | null;
       brandColors: string[];
       voiceCharacteristics: string;
       contentPillars: string[];
@@ -71,6 +73,8 @@ export function useCreateProfile() {
         data.newsletterUrl,
         data.blogUrl,
         data.podcastUrl,
+        data.facebookUrl,
+        data.facebookContentType,
         data.brandColors,
         data.voiceCharacteristics,
         data.contentPillars,

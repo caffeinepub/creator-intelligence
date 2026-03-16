@@ -1,13 +1,11 @@
 import Map "mo:core/Map";
 import List "mo:core/List";
 import Array "mo:core/Array";
-import Text "mo:core/Text";
 import Principal "mo:core/Principal";
-import Time "mo:core/Time";
 import Runtime "mo:core/Runtime";
+import Migration "migration";
 
-
-
+(with migration = Migration.run)
 actor {
   type CreatorProfile = {
     brandName : Text;
@@ -18,6 +16,8 @@ actor {
     newsletterUrl : ?Text;
     blogUrl : ?Text;
     podcastUrl : ?Text;
+    facebookUrl : ?Text;
+    facebookContentType : ?Text;
     brandColors : [Text];
     voiceCharacteristics : Text;
     contentPillars : [Text];
@@ -44,6 +44,7 @@ actor {
     #newsletter;
     #blog;
     #podcast;
+    #facebook;
   };
 
   let contentLibrary = Map.empty<Text, Content>();
@@ -57,6 +58,8 @@ actor {
     newsletterUrl : ?Text,
     blogUrl : ?Text,
     podcastUrl : ?Text,
+    facebookUrl : ?Text,
+    facebookContentType : ?Text,
     brandColors : [Text],
     voiceCharacteristics : Text,
     contentPillars : [Text],
@@ -71,6 +74,8 @@ actor {
       newsletterUrl;
       blogUrl;
       podcastUrl;
+      facebookUrl;
+      facebookContentType;
       brandColors;
       voiceCharacteristics;
       contentPillars;

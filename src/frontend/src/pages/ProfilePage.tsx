@@ -32,7 +32,7 @@ import {
   Youtube,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { SiTiktok, SiX } from "react-icons/si";
+import { SiFacebook, SiTiktok, SiX } from "react-icons/si";
 import { toast } from "sonner";
 import { ProfileForm } from "../components/ProfileForm";
 import ProfileInsightsList from "../components/ProfileInsightsList";
@@ -55,6 +55,7 @@ import {
 
 const PLATFORM_ICONS: Record<string, React.ReactNode> = {
   instagram: <Instagram className="w-4 h-4" />,
+  facebook: <SiFacebook className="w-4 h-4" />,
   tiktok: <SiTiktok className="w-4 h-4" />,
   youtube: <Youtube className="w-4 h-4" />,
   twitter: <SiX className="w-4 h-4" />,
@@ -66,6 +67,7 @@ const PLATFORM_ICONS: Record<string, React.ReactNode> = {
 function getPlatformLabel(key: string): string {
   const labels: Record<string, string> = {
     instagram: "Instagram",
+    facebook: "Facebook",
     tiktok: "TikTok",
     youtube: "YouTube",
     twitter: "Twitter / X",
@@ -81,6 +83,7 @@ function getProfileLinks(
 ) {
   return [
     { key: "instagram", url: profile.instagramUrl },
+    { key: "facebook", url: profile.facebookUrl },
     { key: "tiktok", url: profile.tiktokUrl },
     { key: "youtube", url: profile.youtubeUrl },
     { key: "twitter", url: profile.twitterUrl },
@@ -312,6 +315,8 @@ export function ProfilePage() {
                     newsletterUrl: profile.newsletterUrl,
                     blogUrl: profile.blogUrl,
                     podcastUrl: profile.podcastUrl,
+                    facebookUrl: profile.facebookUrl,
+                    facebookContentType: profile.facebookContentType,
                     brandColors: profile.brandColors,
                     voiceCharacteristics: profile.voiceCharacteristics,
                     contentPillars: profile.contentPillars,

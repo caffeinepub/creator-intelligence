@@ -28,9 +28,11 @@ export interface CreatorProfile {
   'twitterUrl' : [] | [string],
   'instagramUrl' : [] | [string],
   'newsletterUrl' : [] | [string],
+  'facebookContentType' : [] | [string],
   'brandColors' : Array<string>,
   'brandName' : string,
   'youtubeUrl' : [] | [string],
+  'facebookUrl' : [] | [string],
   'tiktokUrl' : [] | [string],
 }
 export type InsightCategory = { 'contentPerformance' : null } |
@@ -43,6 +45,7 @@ export type Platform = { 'tiktok' : null } |
   { 'blog' : null } |
   { 'instagram' : null } |
   { 'podcast' : null } |
+  { 'facebook' : null } |
   { 'youtube' : null } |
   { 'newsletter' : null };
 export interface ProfileInsight {
@@ -60,6 +63,8 @@ export interface _SERVICE {
   'createProfile' : ActorMethod<
     [
       string,
+      [] | [string],
+      [] | [string],
       [] | [string],
       [] | [string],
       [] | [string],

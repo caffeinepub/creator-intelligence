@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
@@ -18,6 +25,8 @@ interface ProfileFormProps {
     newsletterUrl: string;
     blogUrl: string;
     podcastUrl: string;
+    facebookUrl: string;
+    facebookContentType: string;
     brandColors: string[];
     voiceCharacteristics: string;
     contentPillars: string[];
@@ -32,6 +41,8 @@ interface ProfileFormProps {
     newsletterUrl?: string;
     blogUrl?: string;
     podcastUrl?: string;
+    facebookUrl?: string;
+    facebookContentType?: string;
     brandColors: string[];
     voiceCharacteristics: string;
     contentPillars: string[];
@@ -57,6 +68,12 @@ export function ProfileForm({
   );
   const [blogUrl, setBlogUrl] = useState(initialData?.blogUrl || "");
   const [podcastUrl, setPodcastUrl] = useState(initialData?.podcastUrl || "");
+  const [facebookUrl, setFacebookUrl] = useState(
+    initialData?.facebookUrl || "",
+  );
+  const [facebookContentType, setFacebookContentType] = useState(
+    initialData?.facebookContentType || "",
+  );
   const [brandColors, setBrandColors] = useState<string[]>(
     initialData?.brandColors || [],
   );
@@ -90,6 +107,8 @@ export function ProfileForm({
       newsletterUrl,
       blogUrl,
       podcastUrl,
+      facebookUrl,
+      facebookContentType,
       brandColors,
       voiceCharacteristics,
       contentPillars: finalPillars,
@@ -121,6 +140,43 @@ export function ProfileForm({
               placeholder="https://instagram.com/username"
               type="url"
             />
+          </div>
+
+          {/* Facebook — dedicated card matching Instagram's layout */}
+          <div className="space-y-2 p-3 rounded-lg border border-border bg-muted/30">
+            <Label
+              htmlFor="facebookUrl"
+              className="font-display font-semibold text-sm"
+            >
+              Facebook
+            </Label>
+            <Input
+              id="facebookUrl"
+              value={facebookUrl}
+              onChange={(e) => setFacebookUrl(e.target.value)}
+              placeholder="https://facebook.com/username"
+              type="url"
+              data-ocid="profile.facebook_url.input"
+            />
+            <Select
+              value={facebookContentType}
+              onValueChange={setFacebookContentType}
+            >
+              <SelectTrigger
+                id="facebookContentType"
+                data-ocid="profile.facebook_content_type.select"
+              >
+                <SelectValue placeholder="Content type…" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="personal_profile">
+                  Personal Profile
+                </SelectItem>
+                <SelectItem value="business_page">Business Page</SelectItem>
+                <SelectItem value="creator_page">Creator Page</SelectItem>
+                <SelectItem value="group">Group</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <div>
